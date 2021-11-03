@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/golang/glog"
 	"io"
 	"log"
 	"net"
@@ -11,6 +12,7 @@ import (
 )
 
 func main() {
+	glog.V(2).Info("Starting http server...")
 	myHandler := http.HandlerFunc(rootHandle)
 	http.Handle("/", WithLogging(myHandler))
 	http.HandleFunc("/healthz", healthz)
